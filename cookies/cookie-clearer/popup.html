@@ -2,14 +2,32 @@
 <html>
   <head>
     <script src="popup.js" type="module"></script>
+    <link rel="stylesheet" href="popup.css">
   </head>
   <body>
-    <form id="control-row">
+    <label for="input">Domain:</label>
+    <input type="text" id="domainInput" />
+    <br />
+    <button id="query">Query Cookies</button>
+    <table id="cookies">
+      <tr class="header">
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Domain</th>
+          <th>Path</th>
+          <th>Expires</th>          
+          <th>SameSite</th>          
+        </tr>
+      </tr>
+      <tbody class="cookies-body"></tbody>
+    </table>
+    <!-- <form id="control-row">
       <label for="input">Domain:</label>
       <input type="text" id="input" />
       <br />
       <button id="go">Clear Cookies</button>
     </form>
-    <span id="message" hidden></span>
+    <span id="message" hidden></span> -->
   </body>
 </html>
