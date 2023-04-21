@@ -73,19 +73,19 @@ showCurrentPage();
 // If a popup is specified, our on click handler won't be called. We declare it here rather than in
 // the `onclicked-button` handler to prevent the user from accidentally registering multiple
 // onClicked listeners.
-// chrome.action.onClicked.addListener((tab) => {
-//   chrome.tabs.create({ url: 'https://html5zombo.com/' });
-// });
-
-chrome.action.onClicked.addListener(function (tab) {  
-  chrome.storage.local.set({ 'test': '123','asd':'789' }).then(() => {
-    alert("Value is set");
-
-    chrome.storage.local.get(['test','asd']).then((result) => {
-      alert("Value currently is " + result.asd);
-    });
-  });
+chrome.action.onClicked.addListener((tab) => {
+  chrome.tabs.create({ url: 'https://html5zombo.com/' });
 });
+
+// chrome.action.onClicked.addListener(function (tab) {  
+//   chrome.storage.local.set({ 'test': '123','asd':'789' }).then(() => {
+//     alert("Value is set");
+
+//     chrome.storage.local.get(['test','asd']).then((result) => {
+//       alert("Value currently is " + result.asd);
+//     });
+//   });
+// });
 
 document
   .getElementById('onclicked-button')
