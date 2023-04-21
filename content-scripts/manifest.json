@@ -14,8 +14,9 @@
     {
       "js": ["scripts/content.js"],
       "matches": [
-        "https://developer.chrome.com/docs/extensions/*",
-        "https://developer.chrome.com/docs/webstore/*"
+        "https://erpdev.boltun.local/*",
+        "http://erpdev.boltun.local/*",
+        "http://yk-mes.boltun.local/"
       ]
     }
   ]
