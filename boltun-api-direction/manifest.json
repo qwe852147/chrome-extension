@@ -1,0 +1,24 @@
+{
+  "name": "ReDirection Api",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions":[
+    "storage"    
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": { 
+    "page": "setting.html",        
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "ReDirection Api",  
+    "default_icon": {
+      "32": "icons/32.png",
+      "72": "icons/72.png",
+      "128": "icons/128.png",
+      "512": "icons/512.png"
+    }
+  }
+}
