@@ -1,5 +1,5 @@
 {
-  "name": "Page Redder",
+  "name": "background Demo",
   "description": "Make the current page red",
   "version": "3.0",
   "permissions": [
@@ -10,7 +10,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "Make this page red"
+    "default_title": "Background Demo"
   },
   "manifest_version": 3
 }

@@ -2,16 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-function makeRed() {
-  document.body.style.backgroundColor = "red";
+function makeCorlor() {
+  document.body.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
 }
 
 // Called when the user clicks on the browser action.
 chrome.action.onClicked.addListener(function (tab) {  
-  // No tabs or host permissions needed!
-  console.log("Turning " + tab.url + " red!");
+  // No tabs or host permissions needed!  
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    func: makeRed,
+    func: makeCorlor,
   });
 });
