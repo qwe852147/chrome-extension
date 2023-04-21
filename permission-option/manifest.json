@@ -1,0 +1,18 @@
+{
+  "name": "Permission-option Demo",
+  "description": "Permission-option",
+  "version": "3.0",
+  "permissions": [
+    "activeTab"    
+  ],
+  "optional_permissions":[
+    "scripting"
+  ],   
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Permission-option Demo"    
+  },
+  "manifest_version": 3
+}
