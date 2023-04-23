@@ -16,7 +16,8 @@
       "matches": [
         "https://erpdev.boltun.local/*",
         "http://erpdev.boltun.local/*",
-        "http://yk-mes.boltun.local/"
+        "http://yk-mes.boltun.local/",
+        "https://www.youtube.com/"
       ]
     }
   ]
