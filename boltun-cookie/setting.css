@@ -1,0 +1,37 @@
+.query-panel {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.query-btn {
+  word-break: keep-all;
+}
+
+.card {
+  margin: 20px;
+  padding: 20px;
+  row-gap: 30px;
+}
+
+td,
+th {
+  padding: 10px;
+  vertical-align: middle;
+  min-height: 55px;
+  height: 55px;
+}
+
+.td-value {
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}

@@ -5,8 +5,8 @@
 // https://developers.google.com/open-source/licenses/bsd
 
 // Show the demo page once the extension is installed
-chrome.runtime.onInstalled.addListener((_reason) => {
+chrome.action.onClicked.addListener((tab) => {
   chrome.tabs.create({
-    url: "popup.html",
+    url: "setting.html"
   });
 });
