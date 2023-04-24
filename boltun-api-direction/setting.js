@@ -46,17 +46,17 @@ selectedBtn.addEventListener("click", () => {
   });
 
   if (record) {
-    localStorage.setItem("testLocal", record.value);
+    setLocalStorageValue(record.value);
     settingCurrentUse(record);
   } else {
-    localStorage.removeItem("testLocal");
+    removeLocalStorageValue();
     settingCurrentUse();
   }
 });
 
 clearSelectedBtn.addEventListener("click", () => {
   chrome.storage.local.remove("localSetId");
-  localStorage.removeItem("testLocal");
+  removeLocalStorageValue()
   createOptions();
 });
 
@@ -72,7 +72,7 @@ function queryLocalRecords() {
       createRecordTableRow();
       createOptions(result.localSetId);
     })
-    .catch((err) => {});
+    .catch((err) => { });
 }
 
 function saveLocalRecords() {
@@ -162,14 +162,22 @@ function saveSetting(record) {
   });
 
   if (record) {
-    localStorage.setItem("testLocal", record.value);
+    setLocalStorageValue(record.value)
     settingCurrentUse(record);
   } else {
-    localStorage.removeItem("testLocal");
+    removeLocalStorageValue();
     settingCurrentUse();
   }
 }
 
 function settingCurrentUse(record) {
-  currentContainer.innerText = record? `${record.descript}(${record.value})`:'';
+  currentContainer.innerText = record ? `${record.descript}(${record.value})` : '';
+}
+
+function setLocalStorageValue(v) {
+  localStorage.setItem("debug_api_host", v);
+}
+
+function removeLocalStorageValue() {
+  localStorage.removeItem("debug_api_host");
 }
