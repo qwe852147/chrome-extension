@@ -46,17 +46,14 @@ selectedBtn.addEventListener("click", () => {
   });
 
   if (record) {
-    setLocalStorageValue(record.value);
     settingCurrentUse(record);
   } else {
-    removeLocalStorageValue();
     settingCurrentUse();
   }
 });
 
 clearSelectedBtn.addEventListener("click", () => {
   chrome.storage.local.remove("localSetId");
-  removeLocalStorageValue()
   createOptions();
 });
 
@@ -66,7 +63,6 @@ function queryLocalRecords() {
   chrome.storage.local
     .get(["localStorageKey", "localSetId"])
     .then((result) => {
-      console.log(result);
       records = result.localStorageKey ?? [];
       removeAllTableRow();
       createRecordTableRow();
@@ -144,12 +140,14 @@ function createOptions(selectedId) {
       hasItem = r;
     }
   });
+
   itemSelect.value = hasItem ? selectedId : undefined;
   if (hasItem) {
     itemSelect.value = selectedId;
     saveSetting(hasItem);
   } else {
     itemSelect.value = undefined;
+    settingCurrentUse();
     if (selectedId) {
       saveSetting();
     }
@@ -162,22 +160,41 @@ function saveSetting(record) {
   });
 
   if (record) {
-    setLocalStorageValue(record.value)
     settingCurrentUse(record);
   } else {
-    removeLocalStorageValue();
     settingCurrentUse();
   }
 }
 
 function settingCurrentUse(record) {
   currentContainer.innerText = record ? `${record.descript}(${record.value})` : '';
-}
 
-function setLocalStorageValue(v) {
-  localStorage.setItem("debug_api_host", v);
-}
+  chrome.tabs.query({ url: "http://erpdev.boltun.local/*", currentWindow: false })
+    .then(tabs => {
+      tabs.forEach(t => {
+        chrome.scripting.executeScript({
+          target: { tabId: t.id },
+          func: () => {
+            chrome.storage.local.get(["localStorageKey", "localSetId"])
+              .then((result) => {
+                const si = result.localSetId;
+                const rs = result.localStorageKey ?? [];
 
-function removeLocalStorageValue() {
-  localStorage.removeItem("debug_api_host");
-}
+                if (si) {
+                  const rd = rs.find(r => r.id == si);
+
+                  if (rd) {
+                    localStorage.setItem("debug_api_host", rd.value);
+                  } else {
+                    localStorage.removeItem("debug_api_host");
+                  }
+                } else {
+                  localStorage.removeItem("debug_api_host");
+                }
+              })
+              .catch((err) => { });
+          },
+        })
+      });
+    })
+};

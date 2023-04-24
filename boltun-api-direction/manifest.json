@@ -3,7 +3,12 @@
   "version": "1.0",
   "manifest_version": 3,
   "permissions": [
-    "storage"
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://erpdev.boltun.local/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -14,5 +19,13 @@
   },
   "action": {
     "default_title": "ReDirection Api"
-  }
+  },
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": [
+        "http://erpdev.boltun.local/*"
+      ]
+    }
+  ]
 }
