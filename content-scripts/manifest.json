@@ -17,6 +17,7 @@
         "https://erpdev.boltun.local/*",
         "http://erpdev.boltun.local/*",
         "http://yk-mes.boltun.local/",
+        "https://developer.chrome.com/*",
         "https://www.youtube.com/"
       ]
     }
